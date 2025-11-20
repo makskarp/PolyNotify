@@ -1,0 +1,30 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        BigInt   @id // Telegram User ID
+  username  String?
+  createdAt DateTime @default(now())
+  wallets   Wallet[]
+}
+
+model Wallet {
+  id           Int      @id @default(autoincrement())
+  address      String
+  label        String?  // Optional user-defined label
+  userId       BigInt
+  user         User     @relation(fields: [userId], references: [id])
+  lastFillDate DateTime? // Timestamp of the last processed fill
+  createdAt    DateTime @default(now())
+
+  @@unique([userId, address]) // Prevent duplicate wallets for same user
+}
