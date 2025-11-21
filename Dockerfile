@@ -4,8 +4,8 @@ FROM node:22-alpine
 # Set working directory
 WORKDIR /app
 
-# Install OpenSSL (required for Prisma)
-RUN apk add --no-cache openssl
+# Install OpenSSL and CA certificates (required for Prisma & SSL connections)
+RUN apk add --no-cache openssl ca-certificates
 
 # Copy package files
 COPY package*.json ./
@@ -21,4 +21,5 @@ RUN npx prisma generate
 COPY . .
 
 # Start the bot
-CMD ["npm", "start"]
+# Start the bot (push schema to DB first)
+CMD ["sh", "-c", "npx prisma db push && npm start"]
