@@ -17,6 +17,11 @@ export interface Trade {
     name: string;
     pseudonym: string;
     transactionHash: string;
+    type: 'TRADE';
+    usdcSize: number;
+    bio?: string;
+    profileImage?: string;
+    profileImageOptimized?: string;
 }
 
 export class PolymarketService {
@@ -30,12 +35,14 @@ export class PolymarketService {
      */
     static async getLatestTrades(address: string, limit: number = 10): Promise<Trade[]> {
         try {
-            const response = await axios.get(`${this.BASE_URL}/trades`, {
+            const response = await axios.get(`${this.BASE_URL}/activity`, {
                 params: {
                     user: address,
                     limit: limit.toString(),
                     offset: '0',
-                    takerOnly: 'false',
+                    type: 'TRADE',
+                    sortBy: 'TIMESTAMP',
+                    sortDirection: 'DESC',
                 },
             });
             return response.data;

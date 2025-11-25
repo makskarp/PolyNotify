@@ -35,7 +35,7 @@ export class PollingService {
 
     private async processWallet(wallet: WalletWithUser) {
         try {
-            const trades = await PolymarketService.getLatestTrades(wallet.address, 20);
+            const trades = await PolymarketService.getLatestTrades(wallet.address, 10);
 
             if (trades.length === 0) return;
 
