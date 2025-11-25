@@ -27,8 +27,6 @@ export class PollingService {
 
             for (const wallet of wallets) {
                 await this.processWallet(wallet);
-                // Rate limiting: Wait 1 second between requests
-                await new Promise((resolve) => setTimeout(resolve, 1000));
             }
         } catch (err) {
             console.error('Error in polling loop:', err);

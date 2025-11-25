@@ -8,6 +8,14 @@ import { formatAddress } from '../../utils/formatters';
 // --- Add Wallet Flow ---
 
 export const addWalletHandler = async (ctx: MyContext) => {
+    if (!ctx.from) return;
+
+    const count = await WalletService.countWalletsByUser(BigInt(ctx.from.id));
+    if (count >= 1) {
+        await ctx.reply(t.wallet.limit_reached, { parse_mode: 'Markdown' });
+        return;
+    }
+
     ctx.session.step = 'waiting_for_wallet';
     await ctx.reply(t.wallet.prompt, { parse_mode: 'Markdown' });
 };

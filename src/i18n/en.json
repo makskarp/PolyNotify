@@ -2,18 +2,19 @@
     "welcome": "👋 Welcome to **Polynotify**!\n\nI can track Polymarket addresses for you and notify you of their latest trades.\n\n👇 Choose an option below:",
     "menu": {
         "add_wallet": "➕ Add Wallet",
-        "my_wallets": "📋 My Wallets",
+        "my_wallets": "📋 My Wallet",
         "help": "❓ Help"
     },
     "wallet": {
         "prompt": "Please send me the **EVM Address** (Polygon) you want to track.",
         "invalid": "❌ That doesn't look like a valid EVM address. Please try again.",
         "exists": "⚠️ You are already tracking this wallet. Please try another address.",
+        "limit_reached": "⚠️ **Limit Reached**\n\nYou can only track one wallet at a time. Please delete your existing wallet to add a new one.",
         "label_prompt": "🏷️ **Add a Label** (Optional)\n\nSend me a name for this wallet (e.g., 'My Main', 'Whale 1'), or click /skip.",
         "label_skipped": "Okay, no label added.",
         "added": "✅ **Wallet Added!**\n\nAddress: `{address}`\nLabel: {label}\n\nI'll notify you of any new trades.",
-        "list_empty": "You are not tracking any wallets yet.",
-        "list_header": "📋 **Your Tracked Wallets**\n\nClick on a wallet to manage it:",
+        "list_empty": "You are not tracking any wallet yet.",
+        "list_header": "📋 **Your Tracked Wallet**\n\nClick on a wallet to manage it:",
         "detail_header": "👛 **Wallet Details**\n\nAddress: `{address}`\nLabel: {label}\n\nSelect an action:",
         "edit_label_prompt": "✏️ Send me the new label for this wallet:",
         "label_updated": "✅ Label updated to: **{label}**",
@@ -29,10 +30,10 @@
             "cancel": "❌ Cancel",
             "main_menu": "🏠 Main Menu"
         },
-        "all_set": "👍 **All set!**\n\nI'm monitoring your wallets for new trades. I'll notify you as soon as something happens!",
+        "all_set": "👍 **All set!**\n\nI'm monitoring your wallet for new trades. I'll notify you as soon as something happens!",
         "main_menu_empty": "🏠 Returned to main menu."
     },
-    "help": "**How to use:**\n\n1. Click \"Add Wallet\" and paste a Polymarket user address.\n2. I will check for new trades every minute.\n3. You will get a notification instantly when they trade!",
+    "help": "**How to use:**\n\n1. Click \"Add Wallet\" and paste a Polymarket user address.\n2. I will check for new trades every minute.\n3. You will get a notification instantly when the trade happens!",
     "notification": {
         "new_trade": "{emoji} **New Trade Detected!**",
         "market": "**Market:** [{title}]({url})",
